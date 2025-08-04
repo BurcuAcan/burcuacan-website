@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ThemeToggleButton } from '@/components/atoms/ThemeToggleButton';
 
 const Header = () => {
   return (
@@ -7,13 +8,14 @@ const Header = () => {
         <div className="text-2xl font-bold">
           <Link href="/">Burcu Acan</Link>
         </div>
-        <nav>
+        <nav className="flex items-center space-x-6">
           <ul className="flex space-x-6">
             <li><Link href="#about" className="hover:text-sky-500 transition-colors duration-300">Hakkımda</Link></li>
             <li><Link href="#projects" className="hover:text-sky-500 transition-colors duration-300">Projelerim</Link></li>
             <li><Link href="#skills" className="hover:text-sky-500 transition-colors duration-300">Yeteneklerim</Link></li>
             <li><Link href="#contact" className="hover:text-sky-500 transition-colors duration-300">İletişim</Link></li>
           </ul>
+          <ThemeToggleButton />
         </nav>
       </div>
     </header>
