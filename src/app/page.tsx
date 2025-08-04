@@ -8,7 +8,7 @@ import Footer from '@/components/organisms/Footer';
 
 export default function Home() {
   return (
-    <div className="bg-gray-900 text-white">
+    <div className="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200">
       <Header />
       <main>
         <Hero />

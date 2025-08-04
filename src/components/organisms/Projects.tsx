@@ -1,11 +1,12 @@
 import Heading from '@/components/atoms/Heading';
 import ProjectCard from '@/components/molecules/ProjectCard';
+import AnimatedSection from '@/components/molecules/AnimatedSection';
 
 const Projects = () => {
   return (
-    <section id="projects" className="bg-gray-800 text-white py-20">
-      <div className="container mx-auto text-center">
-        <Heading level={2} className="mb-8">Projelerim</Heading>
+    <AnimatedSection id="projects" className="py-24 sm:py-32 bg-slate-100 dark:bg-slate-900">
+      <div className="container mx-auto px-4 text-center">
+        <Heading level={2} className="mb-12 text-slate-900 dark:text-white">Projelerim</Heading>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ProjectCard 
             title="Proje Adı" 
@@ -15,7 +16,7 @@ const Projects = () => {
           {/* Diğer proje kartları buraya eklenebilir */}
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 };
 
