@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Link from 'next/link';
 import { ThemeToggleButton } from '@/components/atoms/ThemeToggleButton';
 
@@ -5,7 +6,7 @@ interface HeaderProps {
   activeSection: string;
 }
 
-const Header = ({ activeSection }: HeaderProps) => {
+const Header = memo(({ activeSection }: HeaderProps) => {
   const getLinkClass = (section: string) => {
     return `hover:text-sky-500 transition-colors duration-300 ${
       activeSection === section ? 'text-sky-500' : ''
@@ -18,8 +19,8 @@ const Header = ({ activeSection }: HeaderProps) => {
         <div className="text-2xl font-bold">
           <Link href="/">Burcu Acan</Link>
         </div>
-        <nav className="flex items-center space-x-6">
-          <ul className="flex space-x-6">
+        <nav className="flex items-center space-x-4">
+          <ul className="hidden md:flex items-center space-x-6">
             <li><Link href="#hero" className={getLinkClass('hero')}>Anasayfa</Link></li>
             <li><Link href="#about" className={getLinkClass('about')}>Hakkımda</Link></li>
             <li><Link href="#projects" className={getLinkClass('projects')}>Projelerim</Link></li>
@@ -31,6 +32,6 @@ const Header = ({ activeSection }: HeaderProps) => {
       </div>
     </header>
   );
-};
+});
 
 export default Header;

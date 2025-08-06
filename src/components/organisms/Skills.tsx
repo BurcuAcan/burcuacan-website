@@ -11,7 +11,7 @@ const SkillBadge = ({ icon, label }: { icon: React.ReactNode, label: string }) =
 
 const Skills = () => {
   return (
-    <AnimatedSection id="skills" className="py-24 sm:py-32 bg-white dark:bg-slate-800">
+    <AnimatedSection id="skills" className="py-24 sm:py-32 bg-gradient-to-br from-white to-slate-50 dark:from-slate-850 dark:to-slate-800">
       <div className="container mx-auto px-4 text-center">
         <Heading level={2} className="mb-12 text-slate-900 dark:text-white">Yeteneklerim</Heading>
         <div className="flex flex-wrap justify-center gap-4">

@@ -4,7 +4,7 @@ import AnimatedSection from '@/components/molecules/AnimatedSection';
 
 const Contact = () => {
   return (
-    <AnimatedSection id="contact" className="py-24 sm:py-32 bg-slate-100 dark:bg-slate-900">
+    <AnimatedSection id="contact" className="py-24 sm:py-32 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900">
       <div className="container mx-auto px-4 text-center">
         <Heading level={2} className="mb-6 text-slate-900 dark:text-white">İletişim</Heading>
         <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-8">

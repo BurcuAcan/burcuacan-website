@@ -6,9 +6,12 @@ interface ButtonProps {
   className?: string;
   href?: string;
   variant?: 'primary' | 'secondary';
+  target?: string; // Add target prop
+  rel?: string;   // Add rel prop
+  download?: string; // Add download prop
 }
 
-const Button = ({ children, onClick, className, href, variant = 'primary' }: ButtonProps) => {
+const Button = ({ children, onClick, className, href, variant = 'primary', target, rel, download }: ButtonProps) => {
   const baseClasses = "inline-flex items-center justify-center font-bold py-2 px-4 rounded-lg transition-all duration-300";
 
   const variants = {
@@ -20,7 +23,7 @@ const Button = ({ children, onClick, className, href, variant = 'primary' }: But
 
   if (href) {
     return (
-      <a href={href} className={finalClasses}>
+      <a href={href} className={finalClasses} target={target} rel={rel} download={download}>
         {children}
       </a>
     );

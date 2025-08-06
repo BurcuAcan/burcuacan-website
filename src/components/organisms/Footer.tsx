@@ -2,7 +2,7 @@ import { Github, Linkedin, Twitter } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="py-8 bg-white dark:bg-slate-800">
+    <footer className="py-8 bg-gradient-to-br from-white to-slate-50 dark:from-slate-850 dark:to-slate-800">
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
         <p className="text-slate-600 dark:text-slate-400 mb-4 md:mb-0">
           &copy; 2025 Burcu Acan. Tüm hakları saklıdır.

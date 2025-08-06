@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Header from '@/components/organisms/Header';
 import Hero from '@/components/organisms/Hero';
@@ -10,7 +10,7 @@ import Skills from '@/components/organisms/Skills';
 import Contact from '@/components/organisms/Contact';
 import Footer from '@/components/organisms/Footer';
 
-const SectionWrapper = ({ id, children, onInView }: { id: string, children: React.ReactNode, onInView: (id: string) => void }) => {
+const SectionWrapper = memo(({ id, children, onInView }: { id: string, children: React.ReactNode, onInView: (id: string) => void }) => {
   const { ref, inView } = useInView({ 
     threshold: 0, 
     rootMargin: "-50% 0px -50% 0px"
@@ -22,15 +22,15 @@ const SectionWrapper = ({ id, children, onInView }: { id: string, children: Reac
     }
   }, [inView, id, onInView]);
 
-  return <div ref={ref}>{children}</div>;
-};
+  return <div id={id} ref={ref}>{children}</div>;
+});
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('hero');
 
-  const handleInView = (id: string) => {
+  const handleInView = useCallback((id: string) => {
     setActiveSection(id);
-  };
+  }, []);
 
   return (
     <div className="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200">
@@ -46,3 +46,4 @@ export default function Home() {
     </div>
   );
 }
+

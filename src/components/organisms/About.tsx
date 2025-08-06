@@ -3,7 +3,7 @@ import AnimatedSection from '@/components/molecules/AnimatedSection';
 
 const About = () => {
   return (
-    <AnimatedSection id="about" className="py-24 sm:py-32 bg-white dark:bg-slate-800">
+    <AnimatedSection id="about" className="py-24 sm:py-32 bg-gradient-to-br from-white to-slate-50 dark:from-slate-850 dark:to-slate-800">
       <div className="container mx-auto px-4 text-center">
         <Heading level={2} className="mb-6 text-slate-900 dark:text-white">Hakkımda</Heading>
         <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">

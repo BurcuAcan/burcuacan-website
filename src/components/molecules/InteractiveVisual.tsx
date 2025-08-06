@@ -1,21 +1,54 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
 const InteractiveVisual = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springConfig = { stiffness: 400, damping: 80 }; // Daha yumuşak geçiş için değerler
+
+  const springX = useSpring(x, springConfig);
+  const springY = useSpring(y, springConfig);
+
+  const rotateX = useTransform(springY, [-100, 100], [10, -10]);
+  const rotateY = useTransform(springX, [-100, 100], [-10, 10]);
+
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return;
+
+    const rect = ref.current.getBoundingClientRect();
+    x.set(event.clientX - rect.left - rect.width / 2);
+    y.set(event.clientY - rect.top - rect.height / 2);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   return (
     <motion.div
-      className="w-80 h-80 md:w-96 md:h-96 relative"
-      whileHover={{ scale: 1.05 }}
-      transition={{ type: "spring", stiffness: 300 }}
+      ref={ref}
+      className="w-80 h-80 md:w-96 md:h-96 relative flex items-center justify-center rounded-full"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ perspective: 1000 }}
+      transition={{
+        duration: 8,
+        repeat: Infinity,
+        repeatType: "mirror",
+      }}
     >
       <motion.div
-        className="absolute inset-0 rounded-full"
+        className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-400 to-blue-600 shadow-xl"
+        style={{ rotateX, rotateY }}
         animate={{
           background: [
-            "radial-gradient(circle, rgba(56,189,248,1) 0%, rgba(2,132,199,1) 100%)",
-            "radial-gradient(circle, rgba(96,165,250,1) 0%, rgba(37,99,235,1) 100%)",
-            "radial-gradient(circle, rgba(56,189,248,1) 0%, rgba(2,132,199,1) 100%)",
+            "linear-gradient(135deg, #38bdf8, #0284c7)",
+            "linear-gradient(135deg, #60a5fa, #2563eb)",
+            "linear-gradient(135deg, #38bdf8, #0284c7)",
           ],
         }}
         transition={{
@@ -26,8 +59,9 @@ const InteractiveVisual = () => {
       />
       <motion.div
         className="absolute inset-5 rounded-full bg-slate-100 dark:bg-slate-900 opacity-20"
-        style={{ filter: 'blur(10px)' }}
+        style={{ filter: 'blur(15px)', rotateX, rotateY }}
       />
+      {/* İçerik veya başka bir soyut element buraya eklenebilir */}
     </motion.div>
   );
 };
