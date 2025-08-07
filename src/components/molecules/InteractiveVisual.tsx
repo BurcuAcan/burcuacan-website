@@ -52,7 +52,7 @@ const InteractiveVisual = () => {
           ],
         }}
         transition={{
-          duration: 8,
+          duration: 4,
           repeat: Infinity,
           repeatType: "mirror",
         }}
