@@ -8,3 +8,14 @@ html {
 body {
   font-family: 'Inter', sans-serif;
 }
+
+main {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+section {
+  scroll-snap-align: start;
+  height: 100vh;
+}

@@ -22,7 +22,7 @@ const SectionWrapper = memo(({ id, children, onInView }: { id: string, children:
     }
   }, [inView, id, onInView]);
 
-  return <div id={id} ref={ref}>{children}</div>;
+  return <section id={id} ref={ref}>{children}</section>;
 });
 
 export default function Home() {

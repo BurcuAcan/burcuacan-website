@@ -8,16 +8,15 @@ interface HeaderProps {
 
 const Header = memo(({ activeSection }: HeaderProps) => {
   const getLinkClass = (section: string) => {
-    return `hover:text-sky-500 transition-colors duration-300 ${
-      activeSection === section ? 'text-sky-500' : ''
-    }`;
+    return `hover:text-sky-500 transition-colors duration-300 ${activeSection === section ? 'text-sky-500' : ''
+      }`;
   };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent backdrop-blur-sm">
       <div className="container mx-auto flex justify-between items-center p-4">
         <div className="text-2xl font-bold">
-          <Link href="/">Burcu Acan</Link>
+          <Link href="/">Acan</Link>
         </div>
         <nav className="flex items-center space-x-4">
           <ul className="hidden md:flex items-center space-x-6">

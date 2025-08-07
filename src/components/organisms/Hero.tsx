@@ -74,13 +74,13 @@ const Hero = () => {
             className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white mb-4"
             variants={itemVariants}
           >
-            Burcu Acan
+            Yasar Burcu Acan
           </motion.h1>
           <motion.p
             className="text-xl md:text-2xl text-sky-600 dark:text-sky-400 font-semibold mb-8"
           >
             {currentText}
-            <span className="animate-pulse">|</span> {/* Typing cursor */}
+            <span className="animate-pulse">|</span>
           </motion.p>
           <motion.div
             className="flex justify-center md:justify-start gap-4 mb-8"
@@ -116,9 +116,7 @@ const Hero = () => {
             <Image
               src={Profile}
               alt="Burcu Acan Profil Fotoğrafı"
-              width={200}
-              height={200}
-              className="rounded-full object-cover border-2 border-slate-200 dark:border-slate-700 shadow-xl"
+              className="rounded-full max-w-[250px] max-h-[250px] object-cover border-2 border-slate-200 dark:border-slate-700 shadow-xl"
             />
           </div>
         </motion.div>

@@ -31,7 +31,7 @@ const InteractiveVisual = () => {
   return (
     <motion.div
       ref={ref}
-      className="w-80 h-80 md:w-96 md:h-96 relative flex items-center justify-center rounded-full"
+      className="w-100 h-100 md:w-96 md:h-96 relative flex items-center justify-center rounded-full"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ perspective: 1000 }}
