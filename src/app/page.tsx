@@ -10,7 +10,7 @@ import Skills from '@/components/organisms/Skills';
 import Contact from '@/components/organisms/Contact';
 import Footer from '@/components/organisms/Footer';
 
-const SectionWrapper = memo(({ id, children, onInView }: { id: string, children: React.ReactNode, onInView: (id: string) => void }) => {
+const SectionWrapper = memo(({ id, children, onInView, className }: { id: string, children: React.ReactNode, onInView: (id: string) => void, className?: string }) => {
   const { ref, inView } = useInView({ 
     threshold: 0, 
     rootMargin: "-50% 0px -50% 0px"
@@ -22,7 +22,7 @@ const SectionWrapper = memo(({ id, children, onInView }: { id: string, children:
     }
   }, [inView, id, onInView]);
 
-  return <section id={id} ref={ref}>{children}</section>;
+  return <section id={id} ref={ref} className={className}>{children}</section>;
 });
 
 export default function Home() {
@@ -41,8 +41,8 @@ export default function Home() {
         <SectionWrapper id="projects" onInView={handleInView}><Projects /></SectionWrapper>
         <SectionWrapper id="skills" onInView={handleInView}><Skills /></SectionWrapper>
         <SectionWrapper id="contact" onInView={handleInView}><Contact /></SectionWrapper>
+        <Footer />
       </main>
-      <Footer />
     </div>
   );
 }

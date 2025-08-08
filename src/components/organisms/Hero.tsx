@@ -12,31 +12,27 @@ const Hero = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
-  const typingSpeed = 100; // ms
-  const deletingSpeed = 50; // ms
-  const pauseTime = 1500; // ms
+  const typingSpeed = 100;
+  const deletingSpeed = 50;
+  const pauseTime = 1500;
 
   useEffect(() => {
     const handleTyping = () => {
       const currentRole = roles[roleIndex];
 
       if (isDeleting) {
-        // Deleting
         if (charIndex > 0) {
           setCurrentText(currentRole.substring(0, charIndex - 1));
           setCharIndex(charIndex - 1);
         } else {
-          // Done deleting, switch to next role
           setIsDeleting(false);
           setRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
         }
       } else {
-        // Typing
         if (charIndex < currentRole.length) {
           setCurrentText(currentRole.substring(0, charIndex + 1));
           setCharIndex(charIndex + 1);
         } else {
-          // Done typing, pause then delete
           setTimeout(() => setIsDeleting(true), pauseTime);
         }
       }
@@ -61,9 +57,8 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900">
+    <section id="hero" className="min-h-screen px-12 flex items-center bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900 md:pt-0 md:pb-0">
       <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-        {/* Sol Sütun: Metin İçeriği */}
         <motion.div
           className="text-center md:text-left"
           variants={containerVariants}

@@ -9,13 +9,47 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+/* Mobil ve Tablet stilleri (varsayılan olarak daha küçük ekranlar için) */
 main {
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  height: 100vh;
+  scroll-snap-type: none;
+  overflow-y: auto;
+  height: auto;
 }
 
 section {
-  scroll-snap-align: start;
-  height: 100vh;
+  scroll-snap-align: none;
+  height: auto; /* Bölümler içeriğin yüksekliğini alacak */
+  overflow-y: visible; /* İçerik bölüm yüksekliğini zorlayabilir */
+}
+
+#contact {
+  height: 90vh; /* Contact bölümü mobil ve tablette 90vh yüksekliğini alacak */
+}
+
+#contact+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Masaüstü stilleri (daha büyük ekranlar için mobil/tablet stillerini geçersiz kılar) */
+@media (min-width: 768px) {
+  main {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+  }
+
+  section {
+    scroll-snap-align: start;
+    overflow-y: auto; /* İçerik çok uzunsa bölüm içinde kaydırmaya izin ver */
+  }
+
+  section:not(#contact) {
+    height: 100vh; /* Diğer bölümler tam ekran yüksekliğini alacak */
+  }
+
+  #contact {
+    height: 90vh; /* Contact bölümü 90vh yüksekliğini alacak */
+  }
 }

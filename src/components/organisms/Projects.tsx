@@ -5,7 +5,7 @@ import AnimatedSection from '@/components/molecules/AnimatedSection';
 
 const Projects = () => {
   return (
-    <AnimatedSection id="projects" className="py-24 sm:py-32 bg-gradient-to-br from-blue-50 to-slate-100 dark:from-slate-700 dark:to-slate-900">
+    <AnimatedSection id="projects" className="py-24 sm:py-32 bg-gradient-to-br from-blue-50 to-slate-100 dark:from-slate-700 dark:to-slate-900 pt-20 pb-10 md:pt-24 md:pb-10">
       <div className="container mx-auto px-4 text-center">
         <Heading level={2} className="mb-12 text-slate-900 dark:text-white">Projelerim</Heading>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
