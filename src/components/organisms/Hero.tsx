@@ -6,41 +6,48 @@ import InteractiveVisual from '@/components/molecules/InteractiveVisual';
 import Profile from "../../images/BurcuAcanPhoto.jpg";
 import { useState, useEffect } from 'react';
 
-const roles = ["Frontend ", "React ", "Next.JS", "JavaScript", "TyepScript"];
+const roles = ["Frontend", "React JS", "Next.JS", "JavaScript", "TypeScript"];
 
 const Hero = () => {
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
-  const typingSpeed = 100;
+
+  const [developerLeft, setDeveloperLeft] = useState(`calc(${roles[0].length}ch + 0ch)`);
+
+  const typingSpeed = 50;
   const deletingSpeed = 50;
-  const pauseTime = 1500;
+  const pauseTime = 1000;
 
   useEffect(() => {
-    const handleTyping = () => {
-      const currentRole = roles[roleIndex];
+    const currentRole = roles[roleIndex];
 
+    if (!isDeleting && charIndex === 0) {
+      setDeveloperLeft(`calc(${currentRole.length - 1}ch + 0.5ch)`);
+    }
+
+    const handleTyping = () => {
       if (isDeleting) {
         if (charIndex > 0) {
           setCurrentText(currentRole.substring(0, charIndex - 1));
-          setCharIndex(charIndex - 1);
+          setCharIndex((c) => c - 1);
         } else {
           setIsDeleting(false);
-          setRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
+          setRoleIndex((prev) => (prev + 1) % roles.length);
         }
       } else {
         if (charIndex < currentRole.length) {
           setCurrentText(currentRole.substring(0, charIndex + 1));
-          setCharIndex(charIndex + 1);
+          setCharIndex((c) => c + 1);
         } else {
+
           setTimeout(() => setIsDeleting(true), pauseTime);
         }
       }
     };
 
     const timer = setTimeout(handleTyping, isDeleting ? deletingSpeed : typingSpeed);
-
     return () => clearTimeout(timer);
   }, [charIndex, isDeleting, roleIndex]);
 
@@ -92,12 +99,23 @@ const Hero = () => {
           >
             Yasar Burcu Acan
           </motion.h1>
-          <motion.p
-            className="text-xl md:text-2xl text-sky-600 dark:text-sky-400 font-semibold mb-8"
-          >
-            {currentText} Geliştirici
 
+          <motion.p
+            className="text-xl md:text-2xl text-sky-600 dark:text-sky-400 font-semibold mb-8 relative"
+          >
+            <span className="inline-block text-left">{currentText}</span>
+
+            <span
+              className="absolute"
+              style={{
+                left: developerLeft,
+                transition: 'left 0.18s ease',
+              }}
+            >
+              Geliştirici
+            </span>
           </motion.p>
+
           <motion.div
             className="flex flex-col sm:flex-row items-center sm:justify-center md:justify-start gap-4 mb-8"
             variants={itemVariants}
@@ -109,19 +127,37 @@ const Hero = () => {
             >
               Projelerim
             </Button>
-            <Button href="/yasar_burcu_acan_cv.pdf" variant="secondary" className="flex items-center gap-2" target="_blank" rel="noopener noreferrer" download="yasar_burcu_acan_cv.pdf">
+            <Button
+              href="/yasar_burcu_acan_cv.pdf"
+              variant="secondary"
+              className="flex items-center gap-2"
+              target="_blank"
+              rel="noopener noreferrer"
+              download="yasar_burcu_acan_cv.pdf"
+            >
               <Download className="w-5 h-5" />
               Özgeçmiş
             </Button>
           </motion.div>
+
           <motion.div
             className="flex justify-center md:justify-start space-x-6"
             variants={itemVariants}
           >
-            <a href="https://github.com/BurcuAcan" target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-400 transition-colors duration-300">
+            <a
+              href="https://github.com/BurcuAcan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-600 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-400 transition-colors duration-300"
+            >
               <Github className="w-8 h-8" />
             </a>
-            <a href="https://www.linkedin.com/in/burcuacan/" target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-400 transition-colors duration-300">
+            <a
+              href="https://www.linkedin.com/in/burcuacan/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-600 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-400 transition-colors duration-300"
+            >
               <Linkedin className="w-8 h-8" />
             </a>
           </motion.div>
