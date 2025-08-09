@@ -6,7 +6,7 @@ import InteractiveVisual from '@/components/molecules/InteractiveVisual';
 import Profile from "../../images/BurcuAcanPhoto.jpg";
 import { useState, useEffect } from 'react';
 
-const roles = ["Frontend Geliştirici", "React Geliştirici"];
+const roles = ["Frontend ", "React ", "Next.JS", "JavaScript", "TyepScript"];
 
 const Hero = () => {
   const [currentText, setCurrentText] = useState('');
@@ -95,8 +95,8 @@ const Hero = () => {
           <motion.p
             className="text-xl md:text-2xl text-sky-600 dark:text-sky-400 font-semibold mb-8"
           >
-            {currentText}
-            <span className="animate-pulse">|</span>
+            {currentText} Geliştirici
+
           </motion.p>
           <motion.div
             className="flex flex-col sm:flex-row items-center sm:justify-center md:justify-start gap-4 mb-8"
