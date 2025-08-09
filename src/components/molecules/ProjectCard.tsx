@@ -5,8 +5,8 @@ import { ArrowRight } from 'lucide-react';
 interface ProjectCardProps {
   title: string;
   description: string;
-  link: string;
-  icon?: ReactNode; // New prop for icon
+  link?: string;
+  icon?: ReactNode;
   technologies?: string[];
 }
 
@@ -29,10 +29,13 @@ const ProjectCard = ({ title, description, link, icon, technologies }: ProjectCa
           ))}
         </div>
       )}
-      <a href={link} className="inline-flex items-center gap-2 text-sky-500 dark:text-sky-400 hover:underline font-semibold mt-auto">
-        <span>Daha Fazla Bilgi</span>
-        <ArrowRight className="w-4 h-4" />
-      </a>
+      {link && (
+        <a href={link} className="inline-flex items-center gap-2 text-sky-500 dark:text-sky-400 hover:underline font-semibold mt-auto">
+          <span>Daha Fazla Bilgi</span>
+          <ArrowRight className="w-4 h-4" />
+        </a>
+      )}
+
     </div>
   );
 };

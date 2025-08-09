@@ -12,9 +12,8 @@ import ScrollToTopButton from '@/components/atoms/ScrollToTopButton';
 import Footer from '@/components/organisms/Footer';
 
 const SectionWrapper = memo(({ id, children, onInView, className }: { id: string, children: React.ReactNode, onInView: (id: string) => void, className?: string }) => {
-  const { ref, inView } = useInView({ 
-    threshold: 0, 
-    rootMargin: "-50% 0px -50% 0px"
+  const { ref, inView } = useInView({
+    threshold: 0.1,
   });
 
   useEffect(() => {
@@ -35,13 +34,28 @@ export default function Home() {
   }, []);
 
   const scrollToTop = () => {
+    console.log('scrollToTop function called');
     const main = document.querySelector('main');
+
     if (main) {
-      main.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
+      const computedStyle = getComputedStyle(main);
+      const isMainScrollable = computedStyle.overflowY === 'scroll';
+
+      if (isMainScrollable) {
+        console.log('main is scrollable, using main.scrollTo');
+        main.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      } else {
+        console.log('main is not scrollable, using window.scrollTo');
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      }
     } else {
+      console.log('main element not found, using window.scrollTo (fallback)');
       window.scrollTo({
         top: 0,
         behavior: 'smooth',
@@ -60,6 +74,7 @@ export default function Home() {
         <SectionWrapper id="contact" onInView={handleInView}><Contact /></SectionWrapper>
         <Footer />
       </main>
+      {/* <ScrollToTopButton isVisible={activeSection !== 'hero'} onClick={() => (console.log("deneme"))} /> */}
       <ScrollToTopButton isVisible={activeSection !== 'hero'} onClick={scrollToTop} />
     </div>
   );

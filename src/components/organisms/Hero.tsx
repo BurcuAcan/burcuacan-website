@@ -109,7 +109,7 @@ const Hero = () => {
             >
               Projelerim
             </Button>
-            <Button href="/yasar burcu acan cv.pdf" variant="secondary" className="flex items-center gap-2" target="_blank" rel="noopener noreferrer" download="yasar_burcu_acan_cv.pdf">
+            <Button href="/yasar_burcu_acan_cv.pdf" variant="secondary" className="flex items-center gap-2" target="_blank" rel="noopener noreferrer" download="yasar_burcu_acan_cv.pdf">
               <Download className="w-5 h-5" />
               Özgeçmiş
             </Button>
