@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import Link from 'next/link';
 import { ThemeToggleButton } from '@/components/atoms/ThemeToggleButton';
 
 interface HeaderProps {
@@ -12,7 +11,7 @@ const Header = memo(({ activeSection }: HeaderProps) => {
       }`;
   };
 
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id);
     const main = document.querySelector('main');
@@ -52,5 +51,6 @@ const Header = memo(({ activeSection }: HeaderProps) => {
     </header>
   );
 });
+Header.displayName = 'Header';
 
 export default Header;

@@ -25,6 +25,7 @@ const SectionWrapper = memo(({ id, children, onInView, className }: { id: string
 
   return <section id={id} ref={ref} className={className}>{children}</section>;
 });
+SectionWrapper.displayName = 'SectionWrapper';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('hero');

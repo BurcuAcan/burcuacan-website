@@ -6,8 +6,9 @@ import InteractiveVisual from '@/components/molecules/InteractiveVisual';
 import Profile from "../../images/BurcuAcanPhoto.jpg";
 import { useState, useEffect } from 'react';
 
+const roles = ["Frontend Geliştirici", "React Geliştirici"];
+
 const Hero = () => {
-  const roles = ["Frontend Geliştirici", "React Geliştirici"];
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [roleIndex, setRoleIndex] = useState(0);
@@ -41,7 +42,7 @@ const Hero = () => {
     const timer = setTimeout(handleTyping, isDeleting ? deletingSpeed : typingSpeed);
 
     return () => clearTimeout(timer);
-  }, [charIndex, isDeleting, roleIndex, roles]);
+  }, [charIndex, isDeleting, roleIndex]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -56,7 +57,7 @@ const Hero = () => {
     visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
   };
 
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id);
     const main = document.querySelector('main');

@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
+import { ReactNode, MouseEvent } from 'react';
 
 interface ButtonProps {
   children: ReactNode;
-  onClick?: (e: any) => void;
+  onClick?: (e: MouseEvent<HTMLButtonElement> | MouseEvent<HTMLAnchorElement>) => void;
   className?: string;
   href?: string;
   variant?: 'primary' | 'secondary';
