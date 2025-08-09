@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 interface ButtonProps {
   children: ReactNode;
-  onClick?: () => void;
+  onClick?: (e: any) => void;
   className?: string;
   href?: string;
   variant?: 'primary' | 'secondary';
@@ -23,7 +23,7 @@ const Button = ({ children, onClick, className, href, variant = 'primary', targe
 
   if (href) {
     return (
-      <a href={href} className={finalClasses} target={target} rel={rel} download={download}>
+      <a href={href} onClick={onClick} className={finalClasses} target={target} rel={rel} download={download}>
         {children}
       </a>
     );

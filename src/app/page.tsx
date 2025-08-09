@@ -8,6 +8,7 @@ import About from '@/components/organisms/About';
 import Projects from '@/components/organisms/Projects';
 import Skills from '@/components/organisms/Skills';
 import Contact from '@/components/organisms/Contact';
+import ScrollToTopButton from '@/components/atoms/ScrollToTopButton';
 import Footer from '@/components/organisms/Footer';
 
 const SectionWrapper = memo(({ id, children, onInView, className }: { id: string, children: React.ReactNode, onInView: (id: string) => void, className?: string }) => {
@@ -32,6 +33,21 @@ export default function Home() {
     setActiveSection(id);
   }, []);
 
+  const scrollToTop = () => {
+    const main = document.querySelector('main');
+    if (main) {
+      main.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <div className="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200">
       <Header activeSection={activeSection} />
@@ -43,6 +59,7 @@ export default function Home() {
         <SectionWrapper id="contact" onInView={handleInView}><Contact /></SectionWrapper>
         <Footer />
       </main>
+      <ScrollToTopButton isVisible={activeSection !== 'hero'} onClick={scrollToTop} />
     </div>
   );
 }

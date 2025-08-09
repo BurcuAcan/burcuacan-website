@@ -1,5 +1,5 @@
 import Heading from '@/components/atoms/Heading';
-import { Code, Smartphone, Palette, GitBranch, Wind, Type } from 'lucide-react';
+import { Code, Smartphone, Palette, GitBranch, Wind, Type, Layout, Server, Database, Bug, Terminal } from 'lucide-react';
 import AnimatedSection from '@/components/molecules/AnimatedSection';
 
 const SkillBadge = ({ icon, label }: { icon: React.ReactNode, label: string }) => (
@@ -21,6 +21,16 @@ const Skills = () => {
           <SkillBadge icon={<Type className="w-5 h-5" />} label="TypeScript" />
           <SkillBadge icon={<Wind className="w-5 h-5" />} label="Tailwind CSS" />
           <SkillBadge icon={<Palette className="w-5 h-5" />} label="Figma" />
+          <SkillBadge icon={<Code className="w-5 h-5" />} label="HTML" />
+          <SkillBadge icon={<Code className="w-5 h-5" />} label="CSS/SCSS" />
+          <SkillBadge icon={<Layout className="w-5 h-5" />} label="Bootstrap" />
+          <SkillBadge icon={<Server className="w-5 h-5" />} label="Node.js" />
+          <SkillBadge icon={<Database className="w-5 h-5" />} label="Firebase" />
+          <SkillBadge icon={<Bug className="w-5 h-5" />} label="Cypress" />
+          <SkillBadge icon={<GitBranch className="w-5 h-5" />} label="Git/GitHub" />
+          <SkillBadge icon={<Terminal className="w-5 h-5" />} label="Python" />
+          <SkillBadge icon={<Server className="w-5 h-5" />} label="ASP.NET Core" />
+
         </div>
       </div>
     </AnimatedSection>

@@ -7,7 +7,7 @@ import Profile from "../../images/BurcuAcanPhoto.jpg";
 import { useState, useEffect } from 'react';
 
 const Hero = () => {
-  const roles = ["Frontend Geliştirici", "UI/UX Tasarımcısı"];
+  const roles = ["Frontend Geliştirici", "React Geliştirici"];
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [roleIndex, setRoleIndex] = useState(0);
@@ -56,6 +56,26 @@ const Hero = () => {
     visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
   };
 
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    const main = document.querySelector('main');
+
+    if (element && main) {
+      const originalSnapType = getComputedStyle(main).scrollSnapType;
+      main.style.scrollSnapType = 'none';
+
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+
+      setTimeout(() => {
+        main.style.scrollSnapType = originalSnapType;
+      }, 1000);
+    }
+  };
+
   return (
     <section id="hero" className="min-h-screen px-12 flex items-center bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900 md:pt-0 md:pb-0">
       <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
@@ -78,10 +98,16 @@ const Hero = () => {
             <span className="animate-pulse">|</span>
           </motion.p>
           <motion.div
-            className="flex justify-center md:justify-start gap-4 mb-8"
+            className="flex flex-col sm:flex-row items-center sm:justify-center md:justify-start gap-4 mb-8"
             variants={itemVariants}
           >
-            <Button href="#projects" variant="primary">Projelerim</Button>
+            <Button
+              href="#projects"
+              variant="primary"
+              onClick={(e) => handleScrollTo(e, 'projects')}
+            >
+              Projelerim
+            </Button>
             <Button href="/yasar burcu acan cv.pdf" variant="secondary" className="flex items-center gap-2" target="_blank" rel="noopener noreferrer" download="yasar_burcu_acan_cv.pdf">
               <Download className="w-5 h-5" />
               Özgeçmiş
@@ -111,7 +137,7 @@ const Hero = () => {
             <Image
               src={Profile}
               alt="Burcu Acan Profil Fotoğrafı"
-              className="rounded-full max-w-[250px] max-h-[250px] object-cover border-2 border-slate-200 dark:border-slate-700 shadow-xl"
+              className="rounded-full lg:max-w-[250px] lg:max-h-[250px] md:max-w-[200px] md:max-h-[200px] object-cover border-2 border-slate-200 dark:border-slate-700 shadow-xl"
             />
           </div>
         </motion.div>

@@ -7,7 +7,7 @@ const InteractiveVisual = () => {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const springConfig = { stiffness: 400, damping: 80 }; // Daha yumuşak geçiş için değerler
+  const springConfig = { stiffness: 400, damping: 80 };
 
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
@@ -31,7 +31,7 @@ const InteractiveVisual = () => {
   return (
     <motion.div
       ref={ref}
-      className="w-100 h-100 md:w-96 md:h-96 relative flex items-center justify-center rounded-full"
+      className="lg:w-100 lg:h-100 md:w-75 md:h-75 relative flex items-center justify-center rounded-full"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ perspective: 1000 }}
@@ -61,7 +61,6 @@ const InteractiveVisual = () => {
         className="absolute inset-5 rounded-full bg-slate-100 dark:bg-slate-900 opacity-20"
         style={{ filter: 'blur(15px)', rotateX, rotateY }}
       />
-      {/* İçerik veya başka bir soyut element buraya eklenebilir */}
     </motion.div>
   );
 };
