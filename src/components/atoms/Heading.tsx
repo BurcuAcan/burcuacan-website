@@ -1,4 +1,5 @@
-import { ReactNode } from 'react';
+import { JSX, ReactNode } from 'react';
+import React from 'react';
 
 interface HeadingProps {
   children: ReactNode;
