@@ -101,12 +101,17 @@ const Hero = () => {
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl text-sky-600 dark:text-sky-400 font-semibold mb-8 relative"
+            className="text-xl md:text-2xl text-sky-600 dark:text-sky-400 font-semibold mb-8 relative
+             flex flex-col md:block"
           >
-            <span className="inline-block text-left">{currentText}</span>
+            <span
+              className="inline-block text-center md:text-left min-w-[120px]"
+            >
+              {currentText || '\u00A0'}
+            </span>
 
             <span
-              className="absolute"
+              className="md:absolute"
               style={{
                 left: developerLeft,
                 transition: 'left 0.18s ease',
@@ -115,6 +120,8 @@ const Hero = () => {
               Geliştirici
             </span>
           </motion.p>
+
+
 
           <motion.div
             className="flex flex-col sm:flex-row items-center sm:justify-center md:justify-start gap-4 mb-8"
