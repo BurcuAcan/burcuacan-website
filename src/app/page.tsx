@@ -64,7 +64,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200">
+    <div className="bg-background text-foreground transition-colors duration-300">
       <Header activeSection={activeSection} />
       <main>
         <SectionWrapper id="hero" onInView={handleInView}><Hero /></SectionWrapper>

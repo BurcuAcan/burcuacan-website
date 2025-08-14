@@ -3,7 +3,7 @@ import { Code, Smartphone, Palette, GitBranch, Wind, Type, Layout, Server, Datab
 import AnimatedSection from '@/components/molecules/AnimatedSection';
 
 const SkillBadge = ({ icon, label }: { icon: React.ReactNode, label: string }) => (
-  <div className="flex items-center gap-2 bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 px-4 py-2 rounded-full font-medium">
+  <div className="flex items-center gap-2 bg-secondary text-secondary-foreground px-4 py-2 rounded-full font-medium">
     {icon}
     <span>{label}</span>
   </div>
@@ -11,9 +11,9 @@ const SkillBadge = ({ icon, label }: { icon: React.ReactNode, label: string }) =
 
 const Skills = () => {
   return (
-    <AnimatedSection id="skills" className="h-screen flex flex-col justify-center bg-gradient-to-br from-white to-slate-50 dark:from-slate-850 dark:to-slate-800 pt-20 pb-10 md:pt-0 md:pb-0">
+    <AnimatedSection id="skills" className="h-screen flex flex-col justify-center bg-gradient-skills pt-20 pb-10 md:pt-0 md:pb-0">
       <div className="container mx-auto px-4 text-center">
-        <Heading level={2} className="mb-12 text-slate-900 dark:text-white">Yeteneklerim</Heading>
+        <Heading level={2} className="mb-12 text-foreground">Yeteneklerim</Heading>
         <div className="flex flex-wrap justify-center gap-4">
           <SkillBadge icon={<Code className="w-5 h-5" />} label="JavaScript" />
           <SkillBadge icon={<Smartphone className="w-5 h-5" />} label="React" />

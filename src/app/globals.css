@@ -1,12 +1,127 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
 @import "tailwindcss";
 
+/* CSS Variables for Dark Mode - Original Color Palette */
+:root {
+  /* Light mode - Rose/Pink warm tones theme */
+  --background: 255 251 252; /* rose-50 (soft pink-white) */
+  --foreground: 136 19 55; /* rose-900 (dark rose) */
+  --card: 255 255 255; /* white */
+  --card-foreground: 136 19 55; /* rose-900 */
+  --primary: 244 63 94; /* rose-500 (vibrant rose) */
+  --primary-foreground: 255 255 255; /* white */
+  --secondary: 251 207 232; /* rose-200 (light rose) */
+  --secondary-foreground: 136 19 55; /* rose-900 */
+  --muted: 254 242 242; /* rose-100 (very light rose) */
+  --muted-foreground: 159 18 57; /* rose-800 */
+  --border: 251 207 232; /* rose-200 */
+  --ring: 244 63 94; /* rose-500 */
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.18);
+}
+
+.dark {
+  /* Dark mode - Original slate/navy theme */
+  --background: 2 6 23; /* slate-950 */
+  --foreground: 248 250 252; /* slate-50 */
+  --card: 15 23 42; /* slate-900 */
+  --card-foreground: 248 250 252; /* slate-50 */
+  --primary: 125 211 252; /* sky-300 */
+  --primary-foreground: 15 23 42; /* slate-900 */
+  --secondary: 30 41 59; /* slate-800 */
+  --secondary-foreground: 241 245 249; /* slate-100 */
+  --muted: 51 65 85; /* slate-700 */
+  --muted-foreground: 148 163 184; /* slate-400 */
+  --border: 51 65 85; /* slate-700 */
+  --ring: 125 211 252; /* sky-300 */
+  --glass-bg: rgba(15, 23, 42, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Utility classes using CSS variables */
+@layer utilities {
+  .bg-background {
+    background-color: rgb(var(--background));
+  }
+  .bg-foreground {
+    background-color: rgb(var(--foreground));
+  }
+  .bg-card {
+    background-color: rgb(var(--card));
+  }
+  .bg-primary {
+    background-color: rgb(var(--primary));
+  }
+  .bg-secondary {
+    background-color: rgb(var(--secondary));
+  }
+  .bg-muted {
+    background-color: rgb(var(--muted));
+  }
+  
+  .text-background {
+    color: rgb(var(--background));
+  }
+  .text-foreground {
+    color: rgb(var(--foreground));
+  }
+  .text-card-foreground {
+    color: rgb(var(--card-foreground));
+  }
+  .text-primary {
+    color: rgb(var(--primary));
+  }
+  .text-primary-foreground {
+    color: rgb(var(--primary-foreground));
+  }
+  .text-secondary-foreground {
+    color: rgb(var(--secondary-foreground));
+  }
+  .text-muted-foreground {
+    color: rgb(var(--muted-foreground));
+  }
+  
+  .border-border {
+    border-color: rgb(var(--border));
+  }
+  
+  .hover\:bg-secondary:hover {
+    background-color: rgb(var(--secondary));
+  }
+
+  /* Custom gradient backgrounds using CSS variables - Bold gradients */
+  .bg-gradient-hero {
+    background: linear-gradient(135deg, rgb(var(--background)), rgb(var(--muted)), rgb(var(--secondary)));
+  }
+  
+  .bg-gradient-about {
+    background: linear-gradient(225deg, rgb(var(--card)), rgb(var(--background)), rgb(var(--muted)));
+  }
+  
+  .bg-gradient-projects {
+    background: linear-gradient(135deg, rgb(var(--muted)), rgb(var(--secondary)), rgb(var(--background)));
+  }
+  
+  .bg-gradient-skills {
+    background: linear-gradient(45deg, rgb(var(--background)), rgb(var(--muted)), rgb(var(--secondary)));
+  }
+  
+  .bg-gradient-contact {
+    background: linear-gradient(315deg, rgb(var(--secondary)), rgb(var(--muted)), rgb(var(--background)));
+  }
+  
+  .bg-gradient-footer {
+    background: linear-gradient(180deg, rgb(var(--muted)), rgb(var(--secondary)));
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Mobil ve Tablet stilleri (varsayılan olarak daha küçük ekranlar için) */

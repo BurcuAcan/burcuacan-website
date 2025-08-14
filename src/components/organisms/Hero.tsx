@@ -85,7 +85,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen px-12 flex items-center bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900 md:pt-0 md:pb-0">
+    <section id="hero" className="min-h-screen px-12 flex items-center bg-gradient-hero md:pt-0 md:pb-0">
       <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
         <motion.div
           className="text-center md:text-left"
@@ -94,14 +94,14 @@ const Hero = () => {
           animate="visible"
         >
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white mb-4"
+            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-4"
             variants={itemVariants}
           >
             Yasar Burcu Acan
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl text-sky-600 dark:text-sky-400 font-semibold mb-8 relative
+            className="text-xl md:text-2xl text-primary font-semibold mb-8 relative
              flex flex-col md:block"
           >
             <span
@@ -155,7 +155,7 @@ const Hero = () => {
               href="https://github.com/BurcuAcan"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-600 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-400 transition-colors duration-300"
+              className="text-muted-foreground hover:text-primary transition-colors duration-300"
             >
               <Github className="w-8 h-8" />
             </a>
@@ -163,7 +163,7 @@ const Hero = () => {
               href="https://www.linkedin.com/in/burcuacan/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-600 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-400 transition-colors duration-300"
+              className="text-muted-foreground hover:text-primary transition-colors duration-300"
             >
               <Linkedin className="w-8 h-8" />
             </a>
@@ -181,7 +181,7 @@ const Hero = () => {
             <Image
               src={Profile}
               alt="Burcu Acan Profil Fotoğrafı"
-              className="rounded-full lg:max-w-[250px] lg:max-h-[250px] md:max-w-[200px] md:max-h-[200px] object-cover border-2 border-slate-200 dark:border-slate-700 shadow-xl"
+              className="rounded-full lg:max-w-[250px] lg:max-h-[250px] md:max-w-[200px] md:max-h-[200px] object-cover border-2 border-border shadow-xl"
             />
           </div>
         </motion.div>

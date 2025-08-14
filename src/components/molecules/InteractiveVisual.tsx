@@ -42,13 +42,18 @@ const InteractiveVisual = () => {
       }}
     >
       <motion.div
-        className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-400 to-blue-600 shadow-xl"
-        style={{ rotateX, rotateY }}
+        className="absolute inset-0 rounded-full shadow-xl"
+        style={{ 
+          rotateX, 
+          rotateY,
+          background: 'linear-gradient(135deg, rgb(var(--primary)), rgb(var(--secondary)), rgb(var(--muted)))'
+        }}
         animate={{
           background: [
-            "linear-gradient(135deg, #38bdf8, #0284c7)",
-            "linear-gradient(135deg, #60a5fa, #2563eb)",
-            "linear-gradient(135deg, #38bdf8, #0284c7)",
+            `linear-gradient(135deg, rgb(var(--primary)), rgb(var(--secondary)))`,
+            `linear-gradient(135deg, rgb(var(--secondary)), rgb(var(--primary)))`,
+            `linear-gradient(135deg, rgb(var(--primary)), rgb(var(--muted)))`,
+            `linear-gradient(135deg, rgb(var(--primary)), rgb(var(--secondary)))`,
           ],
         }}
         transition={{
@@ -58,7 +63,7 @@ const InteractiveVisual = () => {
         }}
       />
       <motion.div
-        className="absolute inset-5 rounded-full bg-slate-100 dark:bg-slate-900 opacity-20"
+        className="absolute inset-5 rounded-full bg-background opacity-20"
         style={{ filter: 'blur(15px)', rotateX, rotateY }}
       />
     </motion.div>
