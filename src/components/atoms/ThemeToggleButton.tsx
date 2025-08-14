@@ -1,8 +1,8 @@
 // src/components/ThemeToggleButton.tsx
 "use client";
 
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
 
 export function ThemeToggleButton() {
@@ -22,9 +22,14 @@ export function ThemeToggleButton() {
       onClick={() =>
         setTheme(currentTheme === "dark" ? "light" : "dark")
       }
-      className="p-2 bg-gray-200 dark:bg-gray-800 text-black dark:text-white rounded"
+      className="relative p-2 ml-4 glass-modern rounded-full border-primary text-tertiary hover:text-primary hover:bg-white/10 dark:hover:bg-white/5 transition-all duration-300 hover:scale-110 backdrop-blur-md"
+      aria-label="Toggle theme"
     >
-      {currentTheme === "dark" ? <Sun /> : <Moon />}
+      {currentTheme === "dark" ? (
+        <Sun className="w-5 h-5 transition-transform duration-300" />
+      ) : (
+        <Moon className="w-5 h-5 transition-transform duration-300" />
+      )}
     </button>
   );
 }

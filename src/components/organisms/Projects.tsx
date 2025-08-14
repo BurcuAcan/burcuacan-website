@@ -5,32 +5,36 @@ import AnimatedSection from '@/components/molecules/AnimatedSection';
 
 const Projects = () => {
   return (
-    <AnimatedSection id="projects" className="py-24 sm:py-32 bg-gradient-to-br from-blue-50 to-slate-100 dark:from-slate-700 dark:to-slate-900 pt-20 pb-10 md:pt-24 md:pb-10">
-      <div className="container mx-auto px-4 text-center">
-        <Heading level={2} className="mb-12 text-slate-900 dark:text-white">Projelerim</Heading>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <section id="projects" className="max-h-screen h-screen flex items-center justify-center py-8 relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-projects"></div>
+      <div className="absolute inset-0 bg-pattern-hero opacity-10"></div>
+
+      <div className="container mx-auto px-4 text-center relative z-10 h-full flex flex-col justify-center">
+        <Heading level={2} className="mb-6 text-inverse text-2xl md:text-3xl">Projelerim</Heading>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-6xl mx-auto max-h-[70vh] overflow-y-auto">
           <ProjectCard
-            title="Restaurant Comparator Web App"
-            description="Bu proje, kullanıcıların farklı restoranları karşılaştırabilmesini sağlayan, etkileşimli ve kullanıcı dostu bir web uygulamasıdır. Özellikle online yemek siparişi veren kullanıcılar için tasarlanmıştır. Kullanıcılar restoranların teslimat ücretlerini, hızlarını ve kullanıcı puanlarını karşılaştırarak en iyi seçeneği belirleyebilir. Proje, web scraping teknolojileriyle verileri internetten çekmekte ve Firebase tabanlı bir backend ile bu verileri yönetmektedir. Görsel karşılaştırmalar ve grafikler yardımıyla kullanıcılar kolayca karar verebilir."
+            title="Restaurant Comparator"
+            description="Kullanıcıların restoranları karşılaştırabilmesini sağlayan web uygulaması. Web scraping ve Firebase ile geliştirildi."
             link="https://github.com/BurcuAcan/obur"
-            icon={<Utensils size={48} />}
-            technologies={["Python", "Flask", "Firebase", "Web Scraping"]}
+            icon={<Utensils size={36} />}
+            technologies={["Python", "Flask", "Firebase"]}
           />
           <ProjectCard
-            title="Mebi – Sosyal Medya Uygulaması"
-            description="Mebi, hem mobil hem de web üzerinde çalışan tam kapsamlı bir sosyal medya uygulamasıdır. Kullanıcılar profil oluşturabilir, gönderiler paylaşabilir, diğer kullanıcılarla etkileşime geçebilir ve gerçek zamanlı bildirimler alabilir. Proje, modern yazılım mimarisiyle çok katmanlı bir yapı üzerine kuruludur. Web arayüzü React ile geliştirilirken, mobil taraf Flutter ile yazılmıştır. ASP.NET Core, uygulamanın güçlü bir backend altyapısını sağlar ve tüm sistem Azure üzerinde barındırılır."
-            icon={<Share2 size={48} />}
-            technologies={["React", "Flutter", "ASP.NET Core", "Azure"]}
+            title="Mebi – Sosyal Medya"
+            description="Tam kapsamlı sosyal medya uygulaması. React, Flutter ve ASP.NET Core ile geliştirildi."
+            icon={<Share2 size={36} />}
+            technologies={["React", "Flutter", "ASP.NET Core"]}
           />
           <ProjectCard
-            title="Teknofest Model Uydu Yarışması (Ground & Flight Software)"
-            description="Bu projede, Teknofest Model Uydu Yarışması için gerçek zamanlı yer ve uçuş yazılımları geliştirdin. Uydu, uçuş sırasında topladığı verileri yer istasyonuna göndermekte, yer istasyonu ise bu verileri anlık olarak görselleştirmektedir. Donanım tarafında Raspberry Pi kullanılırken, yazılım Python ve C dillerinde geliştirildi. Proje, gömülü sistemlerle çalışmak isteyen bir geliştirici için çok önemli bir tecrübe sunmuştur."
-            icon={<Satellite size={48} />}
-            technologies={["Python", "C", "Raspberry Pi", "Embedded Systems"]}
+            title="Teknofest Model Uydu"
+            description="Yer ve uçuş yazılımları geliştirme projesi. Raspberry Pi ve gömülü sistemler kullanıldı."
+            icon={<Satellite size={36} />}
+            technologies={["Python", "C", "Raspberry Pi"]}
           />
         </div>
       </div>
-    </AnimatedSection>
+    </section>
   );
 };
 

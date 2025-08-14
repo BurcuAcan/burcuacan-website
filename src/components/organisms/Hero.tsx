@@ -85,8 +85,12 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen px-12 flex items-center bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900 md:pt-0 md:pb-0">
-      <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+    <section id="hero" className="max-h-screen h-screen px-4 flex items-center relative overflow-hidden">
+      {/* Animated background */}
+      <div className="absolute inset-0 bg-gradient-hero"></div>
+      <div className="absolute inset-0 opacity-20 bg-pattern-hero"></div>
+
+      <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center relative z-10 h-full">
         <motion.div
           className="text-center md:text-left"
           variants={containerVariants}
@@ -94,24 +98,22 @@ const Hero = () => {
           animate="visible"
         >
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white mb-4"
+            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-inverse mb-4"
             variants={itemVariants}
           >
-            Yasar Burcu Acan
+            <span className="gradient-text-primary">Yasar Burcu Acan</span>
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl text-sky-600 dark:text-sky-400 font-semibold mb-8 relative
-             flex flex-col md:block"
+            className="text-xl md:text-2xl text-secondary font-semibold mb-8 relative flex flex-col md:block"
+            variants={itemVariants}
           >
-            <span
-              className="inline-block text-center md:text-left min-w-[120px]"
-            >
+            <span className="inline-block text-center md:text-left min-w-[120px]">
               {currentText || '\u00A0'}
             </span>
 
             <span
-              className="md:absolute"
+              className="md:absolute text-accent"
               style={{
                 left: developerLeft,
                 transition: 'left 0.18s ease',
@@ -121,22 +123,22 @@ const Hero = () => {
             </span>
           </motion.p>
 
-
-
           <motion.div
             className="flex flex-col sm:flex-row items-center sm:justify-center md:justify-start gap-4 mb-8"
             variants={itemVariants}
           >
             <Button
               href="#projects"
-              variant="primary"
+              variant="gradient"
+              size="lg"
               onClick={(e) => handleScrollTo(e, 'projects')}
             >
               Projelerim
             </Button>
             <Button
               href="/yasar_burcu_acan_cv.pdf"
-              variant="secondary"
+              variant="glass"
+              size="lg"
               className="flex items-center gap-2"
               target="_blank"
               rel="noopener noreferrer"
@@ -155,17 +157,17 @@ const Hero = () => {
               href="https://github.com/BurcuAcan"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-600 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-400 transition-colors duration-300"
+              className="glass-modern p-3 rounded-full text-inverse hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 hover:scale-110"
             >
-              <Github className="w-8 h-8" />
+              <Github className="w-6 h-6" />
             </a>
             <a
               href="https://www.linkedin.com/in/burcuacan/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-600 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-400 transition-colors duration-300"
+              className="glass-modern p-3 rounded-full text-inverse hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 hover:scale-110"
             >
-              <Linkedin className="w-8 h-8" />
+              <Linkedin className="w-6 h-6" />
             </a>
           </motion.div>
         </motion.div>
@@ -178,11 +180,14 @@ const Hero = () => {
         >
           <InteractiveVisual />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-            <Image
-              src={Profile}
-              alt="Burcu Acan Profil Fotoğrafı"
-              className="rounded-full lg:max-w-[250px] lg:max-h-[250px] md:max-w-[200px] md:max-h-[200px] object-cover border-2 border-slate-200 dark:border-slate-700 shadow-xl"
-            />
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-accent rounded-full blur-lg opacity-75 animate-pulse"></div>
+              <Image
+                src={Profile}
+                alt="Burcu Acan Profil Fotoğrafı"
+                className="relative rounded-full lg:max-w-[250px] lg:max-h-[250px] md:max-w-[200px] md:max-h-[200px] object-cover border-4 border-white/20 dark:border-white/10 shadow-2xl"
+              />
+            </div>
           </div>
         </motion.div>
       </div>

@@ -1,29 +1,40 @@
-import Heading from '@/components/atoms/Heading';
-import AnimatedSection from '@/components/molecules/AnimatedSection';
-import HighlightedTerm from '@/components/atoms/HighlightedTerm';
-import { FaReact, FaPlane, FaCube } from 'react-icons/fa';
-import { SiTypescript, SiCypress, SiIeee } from 'react-icons/si';
-import { MdOutlineDesignServices } from 'react-icons/md';
-
-const About = () => {
+export default function About() {
   return (
-    <AnimatedSection id="about" className="py-24 px-5 flex justify-center items-center sm:py-32 bg-gradient-to-bl from-white to-slate-50  dark:from-slate-800 dark:to-slate-700 md:pt-24 md:px-24 pb-10">
-      <div className="container mx-auto px-4 text-center">
-        <Heading level={2} className="mb-6 text-slate-900 dark:text-white">Hakkımda</Heading>
-        <p className="text-sm md:text-md text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-          Frontend geliştirme alanında uzmanlaşmış, yaratıcı ve çözüm odaklı bir yazılım geliştiriciyim. <HighlightedTerm Icon={FaReact}>React</HighlightedTerm> ve <HighlightedTerm Icon={SiTypescript}>TypeScript</HighlightedTerm> gibi modern teknolojilerle kullanıcı odaklı, performansı yüksek ve erişilebilir web uygulamaları geliştiriyorum.
+    <section
+      id="about"
+      className="min-h-screen bg-gradient-about flex flex-col justify-center p-4 sm:p-6 md:p-8 md:h-screen md:max-h-screen md:overflow-hidden"
+    >
+      <div className="w-full max-w-2xl mx-auto md:max-w-4xl">
+        <div className="glass-modern rounded-xl md:rounded-3xl p-4 sm:p-6 md:p-8 border-primary backdrop-blur-xl">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 gradient-text-primary text-center">
+            Hakkımda
+          </h2>
 
-          Teknolojiye ve tasarıma olan ilgim sayesinde, sadece işlevsel değil, aynı zamanda estetik açıdan güçlü ürünler ortaya koymayı hedefliyorum. <HighlightedTerm Icon={MdOutlineDesignServices}>UI/UX</HighlightedTerm> prensiplerini esas alarak modüler, ölçeklenebilir ve sürdürülebilir kod yapıları oluşturuyorum.
+          <div className="space-y-4 sm:space-y-5 text-left">
+            <p className="text-sm sm:text-base md:text-lg text-primary leading-relaxed">
+              Frontend geliştirme alanında uzmanlaşmış yazılım geliştiriciyim.
+              <span className="font-semibold text-accent"> React</span> ve
+              <span className="font-semibold text-accent"> TypeScript</span> ile
+              modern web uygulamaları geliştiriyorum.
+            </p>
 
-          Takım çalışmasına yatkınlığım, Agile/Scrum süreçlerindeki deneyimim ve test otomasyonu (<HighlightedTerm Icon={SiCypress}>Cypress</HighlightedTerm>) gibi modern geliştirme alışkanlıklarım sayesinde projelerde her zaman proaktif bir rol alıyorum.
+            <p className="text-sm sm:text-base md:text-lg text-primary leading-relaxed">
+              <span className="font-semibold text-accent">UI/UX</span> prensipleriyle
+              modüler kod yapıları oluşturur, Agile/Scrum ve
+              <span className="font-semibold text-accent"> Cypress</span> test otomasyonu kullanırım.
+            </p>
 
-          Kendimi sürekli geliştirmeye önem veriyorum. Öğrenmeye duyduğum merak beni yeni teknolojilere yönlendirirken, uluslararası deneyimim (<HighlightedTerm Icon={FaPlane}>Work & Travel</HighlightedTerm>) ve gönüllü çalışmalarım (<HighlightedTerm Icon={SiIeee}>IEEE</HighlightedTerm>, <HighlightedTerm Icon={FaCube}>Blockchain</HighlightedTerm> toplulukları) farklı bakış açıları kazandırıyor.
-
-          Amacım; insanların hayatını kolaylaştıran, ilham veren ve teknolojiyi insan odaklı çözümlerle birleştiren dijital ürünler üretmektir.
-        </p>
+            <div className="mt-6 p-4 sm:p-5 md:p-6 glass-modern rounded-lg md:rounded-2xl border-primary backdrop-blur-sm">
+              <div className="flex items-center justify-center mb-3">
+                <div className="text-2xl sm:text-3xl">💡</div>
+              </div>
+              <p className="text-sm sm:text-base md:text-lg font-semibold text-primary text-center leading-relaxed">
+                İnsanların hayatını kolaylaştıran, teknoloji ile insan odaklı çözümleri birleştiren dijital ürünler üretmek amacım.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-    </AnimatedSection>
+    </section>
   );
-};
-
-export default About;
+}

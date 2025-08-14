@@ -1,15 +1,189 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
+:root {
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --shadow-glass: 0 8px 32px rgba(31, 38, 135, 0.37);
+  --shadow-elevated: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* Primary Colors */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  --color-primary-950: #172554;
+
+  /* Secondary Colors */
+  --color-secondary-50: #faf5ff;
+  --color-secondary-100: #f3e8ff;
+  --color-secondary-200: #e9d5ff;
+  --color-secondary-300: #d8b4fe;
+  --color-secondary-400: #c084fc;
+  --color-secondary-500: #a855f7;
+  --color-secondary-600: #9333ea;
+  --color-secondary-700: #7c3aed;
+  --color-secondary-800: #6b21a8;
+  --color-secondary-900: #581c87;
+  --color-secondary-950: #3b0764;
+
+  /* Neutral Colors - Light Theme */
+  --color-neutral-50: #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+  --color-neutral-950: #020617;
+
+  /* Surface Colors - Light Theme */
+  --color-surface-primary: var(--color-neutral-50);
+  --color-surface-secondary: var(--color-neutral-100);
+  --color-surface-tertiary: var(--color-neutral-200);
+
+  /* Text Colors - Light Theme */
+  --color-text-primary: var(--color-neutral-900);
+  --color-text-secondary: var(--color-neutral-700);
+  --color-text-tertiary: var(--color-neutral-500);
+  --color-text-inverse: var(--color-neutral-50);
+
+  /* Border Colors - Light Theme */
+  --color-border-primary: var(--color-neutral-200);
+  --color-border-secondary: var(--color-neutral-300);
+
+  /* Glass Effect Variables */
+  --glass-bg-light: rgba(255, 255, 255, 0.15);
+  --glass-border-light: rgba(255, 255, 255, 0.25);
+  --glass-bg-dark: rgba(15, 23, 42, 0.6);
+  --glass-border-dark: rgba(148, 163, 184, 0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 0;
+}
+
+body {
+  font-family: 'Inter', 'Space Grotesk', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+  scroll-behavior: smooth;
+}
+
+/* Enhanced scroll behavior with controlled transitions */
 html {
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: 'Inter', sans-serif;
+/* Scroll container enhancements */
+.snap-container {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  /* iOS momentum scrolling */
+  overscroll-behavior-y: contain;
+  /* Prevent page bounce on mobile */
 }
 
-/* Mobil ve Tablet stilleri (varsayılan olarak daha küçük ekranlar için) */
+/* Smooth scroll snap transitions */
+.snap-container.snap-proximity {
+  scroll-snap-type: y proximity;
+}
+
+.snap-container.snap-none {
+  scroll-snap-type: none;
+}
+
+.snap-start {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .snap-container {
+    scroll-padding-top: 2rem;
+    scroll-margin-top: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .snap-container {
+    scroll-snap-type: none !important;
+    overscroll-behavior: auto;
+  }
+
+  .snap-start {
+    scroll-snap-align: none;
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.25);
+}
+
+.glass-dark {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.modern-card {
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 24px;
+  box-shadow: var(--shadow-elevated);
+  transition: all 0.3s ease;
+}
+
+.modern-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.modern-card-dark {
+  background: linear-gradient(145deg, #1e293b 0%, #334155 100%);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-gradient {
+  background: var(--gradient-primary);
+  transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+  background: var(--gradient-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.bg-pattern {
+  background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.15) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
 main {
   scroll-snap-type: none;
   overflow-y: auto;
@@ -18,12 +192,13 @@ main {
 
 section {
   scroll-snap-align: none;
-  height: auto; /* Bölümler içeriğin yüksekliğini alacak */
-  overflow-y: visible; /* İçerik bölüm yüksekliğini zorlayabilir */
+  height: auto;
+  overflow-y: visible;
 }
 
+
 #contact {
-  height: 90vh; /* Contact bölümü mobil ve tablette 90vh yüksekliğini alacak */
+  height: 90vh;
 }
 
 #contact+footer {
@@ -32,24 +207,400 @@ section {
   width: 100%;
 }
 
+.about-section {
+  position: relative;
+}
+
+.about-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.3) 0%, transparent 50%);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Text highlight animation */
+.about-section .text-highlight {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.about-section .text-highlight:hover {
+  transform: translateY(-1px);
+}
+
+/* Modern paragraph spacing */
+.about-section p {
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+/* Custom scrollbar styles */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.3) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(59, 130, 246, 0.3);
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(59, 130, 246, 0.5);
+}
+
+.scrollbar-track-transparent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thumb-blue-500\/20::-webkit-scrollbar-thumb {
+  background-color: rgba(59, 130, 246, 0.2);
+}
+
+/* Enhanced glass effect for About section */
+.about-section .glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 8px 32px rgba(31, 38, 135, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Dark mode improvements for About section */
+@media (prefers-color-scheme: dark) {
+  .about-section .glass {
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(148, 163, 184, 0.08);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+}
+
 /* Masaüstü stilleri (daha büyük ekranlar için mobil/tablet stillerini geçersiz kılar) */
 @media (min-width: 768px) {
   main {
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity;
+    /* Daha yumuşak snap */
     overflow-y: scroll;
     height: 100vh;
+    scroll-behavior: smooth;
+    /* Smooth scroll eklendi */
+    scroll-padding: 0;
   }
 
   section {
     scroll-snap-align: start;
-    overflow-y: auto; /* İçerik çok uzunsa bölüm içinde kaydırmaya izin ver */
+    scroll-snap-stop: normal;
+    /* Tek seferde birden fazla section geçilebilir */
+    overflow-y: auto;
+    /* İçerik çok uzunsa bölüm içinde kaydırmaya izin ver */
+    scroll-margin-top: 0;
   }
 
   section:not(#contact) {
-    height: 100vh; /* Diğer bölümler tam ekran yüksekliğini alacak */
+    height: 100vh;
+    /* Diğer bölümler tam ekran yüksekliğini alacak */
+  }
+
+  #about {
+    height: 100vh;
+    /* About bölümü tam ekran yüksekliğini alacak */
+    padding: 0;
+    /* Desktop'ta padding kaldır */
   }
 
   #contact {
-    height: 90vh; /* Contact bölümü 90vh yüksekliğini alacak */
+    height: 90vh;
+    /* Contact bölümü 90vh yüksekliğini alacak */
+  }
+
+  /* Scroll easing için özel CSS */
+  .snap-container {
+    scroll-snap-type: y proximity;
+    -webkit-overflow-scrolling: touch;
+    /* iOS için smooth scroll */
+  }
+}
+
+/* Mobile için scroll snap'i devre dışı bırak */
+@media (max-width: 767px) {
+  main {
+    scroll-snap-type: none !important;
+  }
+
+  section>div {
+    scroll-snap-align: none !important;
+  }
+}
+
+/* ==========================================
+   TAILWIND v4 CUSTOM COLOR SYSTEM
+   ========================================== */
+
+:root {
+  /* Primary Colors */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  --color-primary-950: #172554;
+
+  /* Secondary Colors */
+  --color-secondary-50: #faf5ff;
+  --color-secondary-100: #f3e8ff;
+  --color-secondary-200: #e9d5ff;
+  --color-secondary-300: #d8b4fe;
+  --color-secondary-400: #c084fc;
+  --color-secondary-500: #a855f7;
+  --color-secondary-600: #9333ea;
+  --color-secondary-700: #7c3aed;
+  --color-secondary-800: #6b21a8;
+  --color-secondary-900: #581c87;
+  --color-secondary-950: #3b0764;
+
+  /* Neutral Colors - Light Theme */
+  --color-neutral-50: #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+  --color-neutral-950: #020617;
+
+  /* Surface Colors - Light Theme */
+  --color-surface-primary: var(--color-neutral-50);
+  --color-surface-secondary: var(--color-neutral-100);
+  --color-surface-tertiary: var(--color-neutral-200);
+
+  /* Text Colors - Light Theme */
+  --color-text-primary: var(--color-neutral-900);
+  --color-text-secondary: var(--color-neutral-700);
+  --color-text-tertiary: var(--color-neutral-500);
+  --color-text-inverse: var(--color-neutral-50);
+
+  /* Border Colors - Light Theme */
+  --color-border-primary: var(--color-neutral-200);
+  --color-border-secondary: var(--color-neutral-300);
+
+  /* Glass Effect Variables */
+  --glass-bg-light: rgba(255, 255, 255, 0.15);
+  --glass-border-light: rgba(255, 255, 255, 0.25);
+  --glass-bg-dark: rgba(15, 23, 42, 0.6);
+  --glass-border-dark: rgba(148, 163, 184, 0.1);
+}
+
+.dark {
+  /* Surface Colors - Dark Theme */
+  --color-surface-primary: var(--color-neutral-900);
+  --color-surface-secondary: var(--color-neutral-800);
+  --color-surface-tertiary: var(--color-neutral-700);
+
+  /* Text Colors - Dark Theme */
+  --color-text-primary: var(--color-neutral-50);
+  --color-text-secondary: var(--color-neutral-300);
+  --color-text-tertiary: var(--color-neutral-400);
+  --color-text-inverse: var(--color-neutral-900);
+
+  /* Border Colors - Dark Theme */
+  --color-border-primary: var(--color-neutral-700);
+  --color-border-secondary: var(--color-neutral-600);
+}
+
+/* Custom CSS Classes for Consistent Theme Usage */
+.bg-surface-primary {
+  background-color: var(--color-surface-primary);
+}
+
+.bg-surface-secondary {
+  background-color: var(--color-surface-secondary);
+}
+
+.bg-surface-tertiary {
+  background-color: var(--color-surface-tertiary);
+}
+
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-tertiary {
+  color: var(--color-text-tertiary);
+}
+
+.text-inverse {
+  color: var(--color-text-inverse);
+}
+
+/* Text Color Variants */
+.text-accent {
+  color: var(--color-primary-400);
+}
+
+.dark .text-accent {
+  color: var(--color-primary-300);
+}
+
+.text-accent-secondary {
+  color: var(--color-secondary-400);
+}
+
+.dark .text-accent-secondary {
+  color: var(--color-secondary-300);
+}
+
+.border-primary {
+  border-color: var(--color-border-primary);
+}
+
+.border-secondary {
+  border-color: var(--color-border-secondary);
+}
+
+.glass-modern {
+  background: var(--glass-bg-light);
+  border: 1px solid var(--glass-border-light);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.dark .glass-modern {
+  background: var(--glass-bg-dark);
+  border: 1px solid var(--glass-border-dark);
+}
+
+/* Gradient Classes */
+.gradient-primary {
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-600));
+}
+
+.gradient-text-primary {
+  background: linear-gradient(135deg, var(--color-primary-600), var(--color-secondary-600));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Background Gradient Classes */
+.bg-gradient-hero {
+  background: linear-gradient(135deg, var(--color-primary-900), var(--color-secondary-900), #ec4899);
+}
+
+.dark .bg-gradient-hero {
+  background: linear-gradient(135deg, var(--color-neutral-950), var(--color-neutral-900), var(--color-neutral-800));
+}
+
+.bg-gradient-surface {
+  background: linear-gradient(135deg, var(--color-surface-secondary), var(--color-surface-tertiary));
+}
+
+.bg-gradient-accent {
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-500));
+}
+
+/* Section-specific Background Gradients */
+.bg-gradient-about {
+  background: linear-gradient(135deg, var(--color-primary-50), var(--color-secondary-50), var(--color-primary-100));
+}
+
+.dark .bg-gradient-about {
+  background: linear-gradient(135deg, var(--color-neutral-900), var(--color-primary-950), var(--color-secondary-950));
+}
+
+.bg-gradient-projects {
+  background: linear-gradient(135deg, var(--color-neutral-900), var(--color-secondary-900), var(--color-neutral-900));
+}
+
+.dark .bg-gradient-projects {
+  background: linear-gradient(135deg, var(--color-neutral-950), var(--color-secondary-950), var(--color-neutral-950));
+}
+
+.bg-gradient-skills {
+  background: linear-gradient(135deg, var(--color-neutral-50), var(--color-primary-50), var(--color-secondary-50));
+}
+
+.dark .bg-gradient-skills {
+  background: linear-gradient(135deg, var(--color-neutral-900), var(--color-secondary-900), var(--color-neutral-900));
+}
+
+.bg-gradient-contact {
+  background: linear-gradient(135deg, var(--color-primary-900), var(--color-secondary-900), #ec4899);
+}
+
+.dark .bg-gradient-contact {
+  background: linear-gradient(135deg, var(--color-primary-950), var(--color-secondary-950), var(--color-neutral-950));
+}
+
+/* Card and Component Styles */
+.card-modern {
+  background: var(--color-surface-primary);
+  border: 1px solid var(--color-border-primary);
+  transition: all 0.3s ease;
+}
+
+.card-modern:hover {
+  background: var(--color-surface-secondary);
+  border-color: var(--color-border-secondary);
+}
+
+.skill-badge {
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border-primary);
+  color: var(--color-text-primary);
+}
+
+.skill-badge:hover {
+  background: var(--color-surface-tertiary);
+  color: var(--color-text-primary);
+}
+
+.highlight-card {
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-500));
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
   }
 }

@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from 'react';
+import { useState, ReactNode } from 'react';
 import { IconType } from 'react-icons';
 
 interface HighlightedTermProps {
-  children: React.ReactNode;
+  children: ReactNode;
   Icon: IconType;
 }
 
