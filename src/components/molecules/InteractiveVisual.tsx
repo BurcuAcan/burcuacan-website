@@ -43,23 +43,18 @@ const InteractiveVisual = () => {
     >
       <motion.div
         className="absolute inset-0 rounded-full shadow-xl"
-        style={{ 
-          rotateX, 
+        style={{
+          rotateX,
           rotateY,
-          background: 'linear-gradient(135deg, rgb(var(--primary)), rgb(var(--secondary)), rgb(var(--muted)))'
+          background: 'conic-gradient(from 0deg, rgb(var(--primary)), rgb(var(--secondary)), rgb(var(--muted)), rgb(var(--primary)))'
         }}
         animate={{
-          background: [
-            `linear-gradient(135deg, rgb(var(--primary)), rgb(var(--secondary)))`,
-            `linear-gradient(135deg, rgb(var(--secondary)), rgb(var(--primary)))`,
-            `linear-gradient(135deg, rgb(var(--primary)), rgb(var(--muted)))`,
-            `linear-gradient(135deg, rgb(var(--primary)), rgb(var(--secondary)))`,
-          ],
+          rotate: [0, 360],
         }}
         transition={{
-          duration: 4,
+          duration: 45,
           repeat: Infinity,
-          repeatType: "mirror",
+          ease: "linear",
         }}
       />
       <motion.div
