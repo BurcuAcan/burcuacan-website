@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import ThemeToggleButton from '@/components/atoms/ThemeToggleButton';
-import { playClickSound, playClickSoundWithDelay, SoundTypes } from '@/utils/soundUtils';
+// import { playClickSound, playClickSoundWithDelay, SoundTypes } from '@/utils/soundUtils';
 
 interface HeaderProps {
   activeSection: string;
@@ -16,7 +16,7 @@ const Header = memo(({ activeSection }: HeaderProps) => {
     e.preventDefault();
 
     // Play navigation sound with shorter delay for scroll navigation
-    playClickSoundWithDelay(SoundTypes.NAVIGATION, () => {
+    // playClickSoundWithDelay(SoundTypes.NAVIGATION, () => {
       const element = document.getElementById(id);
       const main = document.querySelector('main');
 
@@ -33,7 +33,7 @@ const Header = memo(({ activeSection }: HeaderProps) => {
           main.style.scrollSnapType = originalSnapType;
         }, 1000);
       }
-    }, 100); // Shorter delay for navigation
+    // }, 100); // Shorter delay for navigation
   };
 
   return (
