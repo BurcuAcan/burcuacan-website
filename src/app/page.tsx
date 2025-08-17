@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import Header from '@/components/organisms/Header';
 import Hero from '@/components/organisms/Hero';
 import About from '@/components/organisms/About';
+import Experience from '@/components/organisms/Experience';
 import Projects from '@/components/organisms/Projects';
 import Skills from '@/components/organisms/Skills';
 import Contact from '@/components/organisms/Contact';
@@ -64,17 +65,17 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-background text-foreground transition-colors duration-300">
+    <div className="bg-background text-foreground transition-colors duration-300 relative">
       <Header activeSection={activeSection} />
       <main>
         <SectionWrapper id="hero" onInView={handleInView}><Hero /></SectionWrapper>
         <SectionWrapper id="about" onInView={handleInView}><About /></SectionWrapper>
+        <SectionWrapper id="experience" onInView={handleInView}><Experience /></SectionWrapper>
         <SectionWrapper id="projects" onInView={handleInView}><Projects /></SectionWrapper>
         <SectionWrapper id="skills" onInView={handleInView}><Skills /></SectionWrapper>
         <SectionWrapper id="contact" onInView={handleInView}><Contact /></SectionWrapper>
         <Footer />
       </main>
-      {/* <ScrollToTopButton isVisible={activeSection !== 'hero'} onClick={() => (console.log("deneme"))} /> */}
       <ScrollToTopButton isVisible={activeSection !== 'hero'} onClick={scrollToTop} />
     </div>
   );

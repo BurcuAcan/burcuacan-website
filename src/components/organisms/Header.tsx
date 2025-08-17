@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import ThemeToggleButton from '@/components/atoms/ThemeToggleButton';
+import { playClickSound, playClickSoundWithDelay, SoundTypes } from '@/utils/soundUtils';
 
 interface HeaderProps {
   activeSection: string;
@@ -13,22 +14,26 @@ const Header = memo(({ activeSection }: HeaderProps) => {
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>, id: string) => {
     e.preventDefault();
-    const element = document.getElementById(id);
-    const main = document.querySelector('main');
 
-    if (element && main) {
-      const originalSnapType = getComputedStyle(main).scrollSnapType;
-      main.style.scrollSnapType = 'none';
+    // Play navigation sound with shorter delay for scroll navigation
+    playClickSoundWithDelay(SoundTypes.NAVIGATION, () => {
+      const element = document.getElementById(id);
+      const main = document.querySelector('main');
 
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
+      if (element && main) {
+        const originalSnapType = getComputedStyle(main).scrollSnapType;
+        main.style.scrollSnapType = 'none';
 
-      setTimeout(() => {
-        main.style.scrollSnapType = originalSnapType;
-      }, 1000);
-    }
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+
+        setTimeout(() => {
+          main.style.scrollSnapType = originalSnapType;
+        }, 1000);
+      }
+    }, 100); // Shorter delay for navigation
   };
 
   return (
@@ -41,6 +46,7 @@ const Header = memo(({ activeSection }: HeaderProps) => {
           <ul className="hidden md:flex items-center space-x-6 text-foreground">
             <li><a href="#hero" className={getLinkClass('hero')} onClick={(e) => handleScrollTo(e, 'hero')}>Anasayfa</a></li>
             <li><a href="#about" className={getLinkClass('about')} onClick={(e) => handleScrollTo(e, 'about')}>Hakkımda</a></li>
+            <li><a href="#experience" className={getLinkClass('experience')} onClick={(e) => handleScrollTo(e, 'experience')}>Deneyim</a></li>
             <li><a href="#projects" className={getLinkClass('projects')} onClick={(e) => handleScrollTo(e, 'projects')}>Projelerim</a></li>
             <li><a href="#skills" className={getLinkClass('skills')} onClick={(e) => handleScrollTo(e, 'skills')}>Yeteneklerim</a></li>
             <li><a href="#contact" className={getLinkClass('contact')} onClick={(e) => handleScrollTo(e, 'contact')}>İletişim</a></li>
