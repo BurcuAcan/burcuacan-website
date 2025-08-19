@@ -3,6 +3,7 @@
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { Sun, Moon } from 'lucide-react'
+import { playClickSound, SoundTypes } from '@/utils/soundUtils'
 
 export default function ThemeToggleButton() {
   const { theme, setTheme, resolvedTheme, systemTheme } = useTheme()
@@ -13,6 +14,9 @@ export default function ThemeToggleButton() {
   }, [])
 
   const toggleTheme = () => {
+    // Play theme toggle sound
+    playClickSound(SoundTypes.THEME);
+
     // Toggle between light and dark, this will override system preference
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
   }

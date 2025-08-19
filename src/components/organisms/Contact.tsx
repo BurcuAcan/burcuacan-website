@@ -1,6 +1,7 @@
 import Heading from '@/components/atoms/Heading';
 import { Mail, Github, Linkedin, Twitter } from 'lucide-react';
 import AnimatedSection from '@/components/molecules/AnimatedSection';
+import { playClickSound, playClickSoundWithDelay, SoundTypes } from '@/utils/soundUtils';
 
 const Contact = () => {
   return (
@@ -10,18 +11,55 @@ const Contact = () => {
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
           Benimle çalışmak veya bir proje hakkında görüşmek isterseniz, aşağıdaki e-posta adresinden bana ulaşabilirsiniz.
         </p>
-        <a href="mailto:burcuuacann@gmail.com" className="flex flex-col justify-center md:flex-row items-center gap-2 text-xl md:text-3xl font-bold text-primary hover:underline mb-8 sm:text-md">
+        <a
+          href="mailto:burcuuacann@gmail.com"
+          className="flex flex-col justify-center md:flex-row items-center gap-2 text-xl md:text-3xl font-bold text-primary hover:underline mb-8 sm:text-md"
+          onClick={() => playClickSound(SoundTypes.EMAIL)}
+        >
           <Mail className="w-8 h-8" />
           <span>burcuuacann@gmail.com</span>
         </a>
         <div className="flex justify-center space-x-6">
-          <a href="https://github.com/BurcuAcan" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300">
+          <a
+            href="https://github.com/BurcuAcan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-primary transition-colors duration-300"
+            onClick={(e) => {
+              e.preventDefault();
+              playClickSoundWithDelay(SoundTypes.SOCIAL, () => {
+                window.open('https://github.com/BurcuAcan', '_blank');
+              });
+            }}
+          >
             <Github className="w-8 h-8" />
           </a>
-          <a href="https://www.linkedin.com/in/burcuacan/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300">
+          <a
+            href="https://www.linkedin.com/in/burcuacan/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-primary transition-colors duration-300"
+            onClick={(e) => {
+              e.preventDefault();
+              playClickSoundWithDelay(SoundTypes.SOCIAL, () => {
+                window.open('https://www.linkedin.com/in/burcuacan/', '_blank');
+              });
+            }}
+          >
             <Linkedin className="w-8 h-8" />
           </a>
-          <a href="#" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300">
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-primary transition-colors duration-300"
+            onClick={(e) => {
+              e.preventDefault();
+              playClickSoundWithDelay(SoundTypes.SOCIAL, () => {
+                // Twitter link - boş bırakıldı
+              });
+            }}
+          >
             <Twitter className="w-8 h-8" />
           </a>
         </div>

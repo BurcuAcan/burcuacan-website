@@ -5,6 +5,7 @@ import Image from 'next/image';
 import InteractiveVisual from '@/components/molecules/InteractiveVisual';
 import Profile from "../../images/BurcuAcanPhoto.jpg";
 import { useState, useEffect } from 'react';
+import { playClickSound, playClickSoundWithDelay, SoundTypes } from '@/utils/soundUtils';
 
 const roles = ["Frontend", "React JS", "Next.JS", "JavaScript", "TypeScript"];
 
@@ -66,22 +67,25 @@ const Hero = () => {
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>, id: string) => {
     e.preventDefault();
-    const element = document.getElementById(id);
-    const main = document.querySelector('main');
 
-    if (element && main) {
-      const originalSnapType = getComputedStyle(main).scrollSnapType;
-      main.style.scrollSnapType = 'none';
+    playClickSoundWithDelay(SoundTypes.NAVIGATION, () => {
+      const element = document.getElementById(id);
+      const main = document.querySelector('main');
 
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
+      if (element && main) {
+        const originalSnapType = getComputedStyle(main).scrollSnapType;
+        main.style.scrollSnapType = 'none';
 
-      setTimeout(() => {
-        main.style.scrollSnapType = originalSnapType;
-      }, 1000);
-    }
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+
+        setTimeout(() => {
+          main.style.scrollSnapType = originalSnapType;
+        }, 1000);
+      }
+    }, 100);
   };
 
   return (
@@ -141,6 +145,7 @@ const Hero = () => {
               target="_blank"
               rel="noopener noreferrer"
               download="yasar_burcu_acan_cv.pdf"
+              onClick={() => playClickSound(SoundTypes.BUTTON)}
             >
               <Download className="w-5 h-5" />
               Özgeçmiş
@@ -156,6 +161,12 @@ const Hero = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors duration-300"
+              onClick={(e) => {
+                e.preventDefault();
+                playClickSoundWithDelay(SoundTypes.SOCIAL, () => {
+                  window.open('https://github.com/BurcuAcan', '_blank');
+                });
+              }}
             >
               <Github className="w-8 h-8" />
             </a>
@@ -164,6 +175,12 @@ const Hero = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors duration-300"
+              onClick={(e) => {
+                e.preventDefault();
+                playClickSoundWithDelay(SoundTypes.SOCIAL, () => {
+                  window.open('https://www.linkedin.com/in/burcuacan/', '_blank');
+                });
+              }}
             >
               <Linkedin className="w-8 h-8" />
             </a>
@@ -181,7 +198,7 @@ const Hero = () => {
             <Image
               src={Profile}
               alt="Burcu Acan Profil Fotoğrafı"
-              className="rounded-full lg:max-w-[250px] lg:max-h-[250px] md:max-w-[200px] md:max-h-[200px] object-cover border-2 border-border shadow-xl"
+              className="rounded-full lg:max-w-[225px] lg:max-h-[225px] md:max-w-[200px] md:max-h-[200px] object-cover border-2 border-border shadow-xl"
             />
           </div>
         </motion.div>

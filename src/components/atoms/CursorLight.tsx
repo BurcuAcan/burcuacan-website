@@ -20,7 +20,7 @@ const CursorLight = () => {
   }, []);
 
   // Theme-aware colors
-  const lightEffect = resolvedTheme === 'dark' 
+  const lightEffect = resolvedTheme === 'dark'
     ? 'rgba(125, 211, 252, 0.15)' // sky-300 for dark theme - cool blue
     : 'rgba(244, 63, 94, 0.12)';   // rose-500 for light theme - warm rose
 
